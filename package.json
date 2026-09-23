@@ -1,0 +1,9 @@
+{
+  "name": "alooz-hosting-panel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ALOOZ Hosting - responsive Minecraft hosting panel MVP",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=20" }
+}

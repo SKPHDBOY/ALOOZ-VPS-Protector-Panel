@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ALOOZ Hosting</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="login" class="login-page">
+  <div class="login-card">
+    <div class="logo">▲ <span>ALOOZ</span><small>HOSTING</small></div>
+    <h1>Welcome Back</h1><p>Manage your Minecraft servers.</p>
+    <form id="loginForm"><input id="user" placeholder="Username" autocomplete="username"><input id="pass" type="password" placeholder="Password" autocomplete="current-password"><button>Login →</button></form>
+    <div id="loginErr" class="error"></div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <aside class="sidebar">
+    <div class="brand">▲ ALOOZ <small>HOSTING</small></div>
+    <nav>
+      <button data-page="dashboard" class="active">▦ Dashboard</button>
+      <button data-page="servers">◈ Servers</button>
+      <button data-page="create">＋ Create Server</button>
+      <button data-page="plugins">◇ Plugins</button>
+      <button data-page="versions">↻ Version Changer</button>
+      <button data-page="settings">⚙ Settings</button>
+    </nav>
+    <button id="logout" class="logout">Logout</button>
+  </aside>
+
+  <main class="main">
+    <header><div><b id="pageTitle">Dashboard</b><span id="clock"></span></div><button id="refresh" class="ghost">↻</button></header>
+
+    <section id="dashboard" class="page">
+      <div class="hero"><div><h1>ALOOZ Hosting</h1><p>Fast • Secure • 24/7 Minecraft hosting control panel.</p></div><button onclick="showPage('create')">＋ Create Server</button></div>
+      <div class="stats"><div><span>Total Servers</span><b id="total">0</b></div><div><span>Running</span><b id="running">0</b></div><div><span>Stopped</span><b id="stopped">0</b></div><div><span>Panel</span><b>v1.0</b></div></div>
+      <h2>Your Servers</h2><div id="serverGrid" class="server-grid"></div>
+    </section>
+
+    <section id="servers" class="page hidden"><div class="section-head"><h2>Servers</h2><button onclick="showPage('create')">＋ Create</button></div><div id="serverList"></div></section>
+
+    <section id="create" class="page hidden">
+      <div class="form-card"><h2>Create Minecraft Server</h2>
+      <form id="createForm" class="form-grid">
+        <label>Server ID<input id="sid" placeholder="my-server" required></label>
+        <label>Server Name<input id="sname" placeholder="My Minecraft Server" required></label>
+        <label>Port<input id="sport" type="number" min="1024" max="65535" value="25565"></label>
+        <label>RAM (GB)<input id="sram" type="number" min="1" value="2"></label>
+        <label>Version<select id="sversion"></select></label>
+        <label>Software<select id="ssoftware"></select></label>
+        <button class="primary" type="submit">Create Server</button>
+      </form><div id="createMsg"></div></div>
+    </section>
+
+    <section id="plugins" class="page hidden">
+      <div class="form-card"><h2>Plugin Installer</h2><p class="muted">Upload/manage .jar files in each server's plugins folder.</p>
+      <label>Server<select id="pluginServer"></select></label>
+      <div class="plugin-box"><input type="file" id="pluginFile" accept=".jar"><button onclick="fakeUpload()">Install Plugin</button></div>
+      <div id="pluginList"></div>
+      <p class="muted">Automatic marketplace downloads can be added later using official Modrinth/Spigot/Paper APIs.</p></div>
+    </section>
+
+    <section id="versions" class="page hidden">
+      <div class="form-card"><h2>Minecraft Version Changer</h2><p class="muted">A backup is created before changing the server runtime.</p>
+      <label>Server<select id="versionServer"></select></label>
+      <label>Version<select id="versionSelect"></select></label>
+      <label>Software<select id="softwareSelect"></select></label>
+      <button class="primary" onclick="changeVersion()">Backup & Change Version</button>
+      <div id="versionMsg"></div></div>
+    </section>
+
+    <section id="settings" class="page hidden"><div class="form-card"><h2>Panel Settings</h2><p>ALOOZ Hosting Panel v1.0</p><p class="muted">Use HTTPS/reverse proxy and a strong password before public deployment.</p></div></section>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body></html>
